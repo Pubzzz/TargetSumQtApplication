@@ -152,7 +152,7 @@
          </font>
         </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string>Target 10-60</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -205,19 +205,6 @@
       </property>
      </widget>
     </item>
-    <item row="8" column="1" colspan="5">
-     <spacer name="horizontalSpacer_3">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
     <item row="1" column="2">
      <spacer name="verticalSpacer">
       <property name="orientation">
@@ -234,19 +221,6 @@
     <item row="5" column="1" colspan="5">
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
-       <spacer name="horizontalSpacer_4">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
        <widget class="QLabel" name="label_2">
         <property name="font">
          <font>
@@ -254,7 +228,7 @@
          </font>
         </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string>Status LBL</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -282,7 +256,7 @@
          </font>
         </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string>Timer 30</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -393,6 +367,58 @@
       </property>
      </spacer>
     </item>
+    <item row="8" column="0" colspan="7">
+     <spacer name="horizontalSpacer_3">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="4" column="1">
+     <spacer name="horizontalSpacer_10">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="4" column="3">
+     <spacer name="horizontalSpacer_4">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="4" column="5">
+     <spacer name="horizontalSpacer_11">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -408,21 +434,33 @@
     <property name="title">
      <string>Beginner</string>
     </property>
+    <addaction name="actionIntermediate"/>
+    <addaction name="actionAdvanced"/>
    </widget>
    <addaction name="menuBeginner"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionIntermediate">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/img/img/B.png</normaloff>:/img/img/B.png</iconset>
+   </property>
    <property name="text">
     <string>Intermediate</string>
    </property>
   </action>
   <action name="actionAdvanced">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/img/img/R.png</normaloff>:/img/img/R.png</iconset>
+   </property>
    <property name="text">
     <string>Advanced</string>
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
 </ui>
