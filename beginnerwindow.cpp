@@ -25,7 +25,11 @@ BeginnerWindow::BeginnerWindow(QWidget *parent)
     //It is started with a value of 1000 milliseconds, indicating that it will time out every second.
     timer->start(1000);
     time.setHMS(0,0,30);
-  calculation();
+
+    if(total==sum){
+        ui->Statuslbl->setText("Congradulations, You Won!!");
+    }
+
 }
 
 BeginnerWindow::~BeginnerWindow()
@@ -56,6 +60,7 @@ void BeginnerWindow::mytimer(){
     if(counter == 30){
         ui->Statuslbl->setText("GAME OVER");
         timer->stop();
+        btnDisable();
     }
 }
 
@@ -117,7 +122,7 @@ void BeginnerWindow::on_Againbtn_clicked()
 void BeginnerWindow::on_btn0_clicked()
 {
     num1 = ui-> btn0->text().toInt();
-    total+=num1;
+    total = total +num1;
     ui->btn0->setEnabled(false);
 
 }
@@ -125,7 +130,7 @@ void BeginnerWindow::on_btn0_clicked()
 void BeginnerWindow::on_btn1_clicked()
 {
     num2 = ui->btn1->text().toInt();
-    total+=num2;
+    total = total +num2;
     ui->btn1->setEnabled(false);
 
 }
@@ -133,7 +138,7 @@ void BeginnerWindow::on_btn1_clicked()
 void BeginnerWindow::on_btn2_clicked()
 {
     num3 = ui->btn2->text().toInt();
-    total+=num3;
+    total = total +num3;
     ui->btn2->setEnabled(false);
 
 }
@@ -142,7 +147,7 @@ void BeginnerWindow::on_btn2_clicked()
 void BeginnerWindow::on_btn3_clicked()
 {
     num4 = ui->btn3->text().toInt();
-     total+=num4;
+    total = total +=num4;
     ui->btn3->setEnabled(false);
 
 }
@@ -151,7 +156,7 @@ void BeginnerWindow::on_btn3_clicked()
 void BeginnerWindow::on_btn4_clicked()
 {
     num5 = ui->btn4->text().toInt();
-     total+=num5;
+    total = total +num5;
     ui->btn4->setEnabled(false);
 
 }
@@ -160,15 +165,17 @@ void BeginnerWindow::on_btn4_clicked()
 void BeginnerWindow::on_btn5_clicked()
 {
     num6 = ui->btn5->text().toInt();
-    total+=num6;
+    total = total +num6;
     ui->btn5->setEnabled(false);
 
 }
 
-void BeginnerWindow::calculation(){
-    if(total==sum){
-        timer->stop();
-        ui->Statuslbl->setText("Congradulations, You Won!!");
-    }
+void BeginnerWindow::btnDisable(){
+    ui->btn0->setEnabled(false);
+    ui->btn1->setEnabled(false);
+    ui->btn2->setEnabled(false);
+    ui->btn3->setEnabled(false);
+    ui->btn4->setEnabled(false);
+    ui->btn5->setEnabled(false);
 }
 

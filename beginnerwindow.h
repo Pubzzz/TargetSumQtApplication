@@ -22,7 +22,7 @@ public:
 public slots:
      void mytimer();
      void myRandomNumber();
-     void calculation();
+     void btnDisable();
 
 private slots:
     void on_actionIntermediate_triggered();
