@@ -2,14 +2,6 @@
 <ui version="4.0">
  <class>AdvancedWindow</class>
  <widget class="QMainWindow" name="AdvancedWindow">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>634</width>
-    <height>628</height>
-   </rect>
-  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
@@ -539,7 +531,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>634</width>
+     <width>602</width>
      <height>25</height>
     </rect>
    </property>
@@ -547,6 +539,8 @@
     <property name="title">
      <string>Advanced</string>
     </property>
+    <addaction name="actionBeginner"/>
+    <addaction name="actionIntermediate"/>
    </widget>
    <addaction name="menuAdvanced"/>
   </widget>

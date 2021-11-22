@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>606</width>
-    <height>589</height>
+    <width>602</width>
+    <height>633</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -22,7 +22,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="1" column="1">
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="btn0">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
         <horstretch>0</horstretch>
@@ -35,7 +35,7 @@
        </font>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string/>
       </property>
      </widget>
     </item>
@@ -53,7 +53,7 @@
      </spacer>
     </item>
     <item row="1" column="5">
-     <widget class="QPushButton" name="pushButton_3">
+     <widget class="QPushButton" name="btn2">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
         <horstretch>0</horstretch>
@@ -66,7 +66,7 @@
        </font>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string/>
       </property>
      </widget>
     </item>
@@ -97,7 +97,7 @@
      </spacer>
     </item>
     <item row="3" column="3">
-     <widget class="QPushButton" name="pushButton_5">
+     <widget class="QPushButton" name="btn4">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
         <horstretch>0</horstretch>
@@ -110,7 +110,7 @@
        </font>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string/>
       </property>
      </widget>
     </item>
@@ -143,7 +143,7 @@
        </spacer>
       </item>
       <item>
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="Targetlbl">
         <property name="font">
          <font>
           <pointsize>20</pointsize>
@@ -152,7 +152,7 @@
          </font>
         </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -188,7 +188,7 @@
      </spacer>
     </item>
     <item row="1" column="3">
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="btn1">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
         <horstretch>0</horstretch>
@@ -201,22 +201,9 @@
        </font>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string/>
       </property>
      </widget>
-    </item>
-    <item row="8" column="1" colspan="5">
-     <spacer name="horizontalSpacer_3">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
     </item>
     <item row="1" column="2">
      <spacer name="verticalSpacer">
@@ -234,27 +221,14 @@
     <item row="5" column="1" colspan="5">
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
-       <spacer name="horizontalSpacer_4">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_2">
+       <widget class="QLabel" name="Statuslbl">
         <property name="font">
          <font>
           <pointsize>14</pointsize>
          </font>
         </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -275,14 +249,14 @@
        </spacer>
       </item>
       <item>
-       <widget class="QLabel" name="label_3">
+       <widget class="QLabel" name="Timerlbl">
         <property name="font">
          <font>
           <pointsize>12</pointsize>
          </font>
         </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -305,7 +279,7 @@
      </layout>
     </item>
     <item row="3" column="1">
-     <widget class="QPushButton" name="pushButton_4">
+     <widget class="QPushButton" name="btn3">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
         <horstretch>0</horstretch>
@@ -318,12 +292,12 @@
        </font>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string/>
       </property>
      </widget>
     </item>
     <item row="7" column="3">
-     <widget class="QPushButton" name="pushButton_7">
+     <widget class="QPushButton" name="Againbtn">
       <property name="font">
        <font>
         <pointsize>12</pointsize>
@@ -350,7 +324,7 @@
      </spacer>
     </item>
     <item row="3" column="5">
-     <widget class="QPushButton" name="pushButton_6">
+     <widget class="QPushButton" name="btn5">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
         <horstretch>0</horstretch>
@@ -363,7 +337,7 @@
        </font>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string/>
       </property>
      </widget>
     </item>
@@ -393,6 +367,58 @@
       </property>
      </spacer>
     </item>
+    <item row="8" column="0" colspan="7">
+     <spacer name="horizontalSpacer_3">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="4" column="1">
+     <spacer name="horizontalSpacer_10">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="4" column="3">
+     <spacer name="horizontalSpacer_4">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="4" column="5">
+     <spacer name="horizontalSpacer_11">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -400,29 +426,41 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>606</width>
-     <height>25</height>
+     <width>602</width>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuBeginner">
     <property name="title">
      <string>Beginner</string>
     </property>
+    <addaction name="actionIntermediate"/>
+    <addaction name="actionAdvanced"/>
    </widget>
    <addaction name="menuBeginner"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionIntermediate">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/img/img/B.png</normaloff>:/img/img/B.png</iconset>
+   </property>
    <property name="text">
     <string>Intermediate</string>
    </property>
   </action>
   <action name="actionAdvanced">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/img/img/R.png</normaloff>:/img/img/R.png</iconset>
+   </property>
    <property name="text">
     <string>Advanced</string>
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
 </ui>
