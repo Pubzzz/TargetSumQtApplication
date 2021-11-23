@@ -1,7 +1,5 @@
 #include "intermediatewindow.h"
 #include "ui_intermediatewindow.h"
-#include "ui_beginnerwindow.h"
-#include "ui_advancedwindow.h"
 
 IntermediateWindow::IntermediateWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -17,14 +15,16 @@ IntermediateWindow::~IntermediateWindow()
 
 void IntermediateWindow::on_actionBeginner_triggered()
 {
-
+    //    this->close();
+    //    beginnerWindow = new BeginnerWindow(this);
+    //    beginnerWindow->show();
 }
 
 
 void IntermediateWindow::on_actionAdvanced_triggered()
 {
-//    advancedWindow = new AdvancedWindow();
+//    this->close();
+//    advancedWindow = new AdvancedWindow(this);
 //    advancedWindow->show();
-//    this->hide();
 }
 

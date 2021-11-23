@@ -2,7 +2,8 @@
 #define ADVANCEDWINDOW_H
 
 #include <QMainWindow>
-
+//#include "intermediatewindow.h"
+//#include "beginnerwindow.h"
 
 namespace Ui {
 class AdvancedWindow;
@@ -23,7 +24,8 @@ private slots:
 
 private:
     Ui::AdvancedWindow *ui;
-
+//    IntermediateWindow *intermediateWindow;
+//    BeginnerWindow *beginnerWindow;
 };
 
 #endif // ADVANCEDWINDOW_H
