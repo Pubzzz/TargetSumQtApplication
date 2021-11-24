@@ -32,15 +32,16 @@ IntermediateWindow::~IntermediateWindow()
 
 void IntermediateWindow::on_actionBeginner_triggered()
 {
-    //    this->close();
-    //    beginnerWindow = new BeginnerWindow(this);
-    //    beginnerWindow->show();
+//        this->close();
+//        beginnerWindow = new BeginnerWindow(this);
+//        beginnerWindow->show();
 }
 
 void IntermediateWindow::on_actionAdvanced_triggered()
 {
 //    this->close();
 //    advancedWindow = new AdvancedWindow(this);
+//    advancedWindow->resize(700,700);
 //    advancedWindow->show();
 }
 
@@ -68,7 +69,7 @@ void IntermediateWindow::myRandomNumber(){
         do
         {
           unique=true;
-          newitem=QRandomGenerator::global()->bounded(10, 50);//Generate number between 1 to 30
+          newitem=QRandomGenerator::global()->bounded(1, 30);//Generate number between 1 to 30
           for(int i1=0;i1<i;i1++)
           {
              if(IArray[i1]==newitem)
