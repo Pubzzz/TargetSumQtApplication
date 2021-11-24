@@ -20,7 +20,6 @@ void IntermediateWindow::on_actionBeginner_triggered()
     //    beginnerWindow->show();
 }
 
-
 void IntermediateWindow::on_actionAdvanced_triggered()
 {
 //    this->close();

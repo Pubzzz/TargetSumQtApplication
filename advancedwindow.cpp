@@ -21,7 +21,6 @@ void AdvancedWindow::on_actionBeginner_triggered()
 //    beginnerWindow->show();
 }
 
-
 void AdvancedWindow::on_actionIntermediate_triggered()
 {
 //    this->close();

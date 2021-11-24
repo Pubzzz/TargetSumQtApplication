@@ -2,7 +2,7 @@
 #include "ui_beginnerwindow.h"
 #include "intermediatewindow.h"
 #include <QRandomGenerator>
-#include <algorithm>
+//#include <algorithm>
 
  int counter =0;
  int sum;
@@ -25,11 +25,6 @@ BeginnerWindow::BeginnerWindow(QWidget *parent)
     //It is started with a value of 1000 milliseconds, indicating that it will time out every second.
     timer->start(1000);
     time.setHMS(0,0,30);
-
-    if(total==sum){
-        ui->Statuslbl->setText("Congradulations, You Won!!");
-    }
-
 }
 
 BeginnerWindow::~BeginnerWindow()
@@ -56,8 +51,10 @@ void BeginnerWindow::mytimer(){
     time = time.addSecs(-1);
     counter += 1;
     ui->Timerlbl->setText(time.toString("mm:ss"));
+    ui->Statuslbl->setStyleSheet("color: green;");
     ui->Statuslbl->setText("PLAYING");
     if(counter == 30){
+        ui->Statuslbl->setStyleSheet("color: red;");
         ui->Statuslbl->setText("GAME OVER");
         timer->stop();
         btnDisable();
@@ -104,18 +101,15 @@ void BeginnerWindow::myRandomNumber(){
 
 void BeginnerWindow::on_Againbtn_clicked()
 {
+    total=0;
     myRandomNumber();
     counter = 0;
     ui->Timerlbl->setText("00:30");
     timer->start(1000);
     time.setHMS(0,0,30);
     mytimer();
-    ui->btn0->setEnabled(true);
-    ui->btn1->setEnabled(true);
-    ui->btn2->setEnabled(true);
-    ui->btn3->setEnabled(true);
-    ui->btn4->setEnabled(true);
-    ui->btn5->setEnabled(true);
+    btnEnable();
+    calculation();
 }
 
 
@@ -124,7 +118,7 @@ void BeginnerWindow::on_btn0_clicked()
     num1 = ui-> btn0->text().toInt();
     total = total +num1;
     ui->btn0->setEnabled(false);
-
+    calculation();
 }
 
 void BeginnerWindow::on_btn1_clicked()
@@ -132,7 +126,7 @@ void BeginnerWindow::on_btn1_clicked()
     num2 = ui->btn1->text().toInt();
     total = total +num2;
     ui->btn1->setEnabled(false);
-
+    calculation();
 }
 
 void BeginnerWindow::on_btn2_clicked()
@@ -140,6 +134,7 @@ void BeginnerWindow::on_btn2_clicked()
     num3 = ui->btn2->text().toInt();
     total = total +num3;
     ui->btn2->setEnabled(false);
+    calculation();
 
 }
 
@@ -149,6 +144,7 @@ void BeginnerWindow::on_btn3_clicked()
     num4 = ui->btn3->text().toInt();
     total = total +=num4;
     ui->btn3->setEnabled(false);
+    calculation();
 
 }
 
@@ -158,6 +154,7 @@ void BeginnerWindow::on_btn4_clicked()
     num5 = ui->btn4->text().toInt();
     total = total +num5;
     ui->btn4->setEnabled(false);
+    calculation();
 
 }
 
@@ -167,6 +164,7 @@ void BeginnerWindow::on_btn5_clicked()
     num6 = ui->btn5->text().toInt();
     total = total +num6;
     ui->btn5->setEnabled(false);
+    calculation();
 
 }
 
@@ -178,4 +176,25 @@ void BeginnerWindow::btnDisable(){
     ui->btn4->setEnabled(false);
     ui->btn5->setEnabled(false);
 }
-
+void BeginnerWindow::btnEnable(){
+    ui->btn0->setEnabled(true);
+    ui->btn1->setEnabled(true);
+    ui->btn2->setEnabled(true);
+    ui->btn3->setEnabled(true);
+    ui->btn4->setEnabled(true);
+    ui->btn5->setEnabled(true);
+}
+void BeginnerWindow::calculation(){
+    if(total==sum){
+        ui->Statuslbl->setStyleSheet("color: green;");
+        ui->Statuslbl->setText("Congradulations, You Won!!");
+        timer->stop();
+        btnDisable();
+    }
+    else if(total>sum){
+        ui->Statuslbl->setStyleSheet("color: red;");
+        ui->Statuslbl->setText("Oops,You Lost! Let's try Again");
+        timer->stop();
+        btnDisable();
+    }
+}

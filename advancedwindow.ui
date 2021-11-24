@@ -2,6 +2,14 @@
 <ui version="4.0">
  <class>AdvancedWindow</class>
  <widget class="QMainWindow" name="AdvancedWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>480</width>
+    <height>576</height>
+   </rect>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
@@ -531,7 +539,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>602</width>
+     <width>480</width>
      <height>25</height>
     </rect>
    </property>
@@ -539,33 +547,11 @@
     <property name="title">
      <string>Advanced</string>
     </property>
-    <addaction name="actionBeginner"/>
-    <addaction name="actionIntermediate"/>
    </widget>
    <addaction name="menuAdvanced"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionBeginner">
-   <property name="icon">
-    <iconset resource="res.qrc">
-     <normaloff>:/img/img/G.png</normaloff>:/img/img/G.png</iconset>
-   </property>
-   <property name="text">
-    <string>Beginner</string>
-   </property>
-  </action>
-  <action name="actionIntermediate">
-   <property name="icon">
-    <iconset resource="res.qrc">
-     <normaloff>:/img/img/B.png</normaloff>:/img/img/B.png</iconset>
-   </property>
-   <property name="text">
-    <string>Intermediate</string>
-   </property>
-  </action>
  </widget>
- <resources>
-  <include location="res.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

@@ -428,33 +428,11 @@
     <property name="title">
      <string>Intermediate</string>
     </property>
-    <addaction name="actionBeginner"/>
-    <addaction name="actionAdvanced"/>
    </widget>
    <addaction name="menuIntermediate"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionBeginner">
-   <property name="icon">
-    <iconset resource="res.qrc">
-     <normaloff>:/img/img/G.png</normaloff>:/img/img/G.png</iconset>
-   </property>
-   <property name="text">
-    <string>Beginner</string>
-   </property>
-  </action>
-  <action name="actionAdvanced">
-   <property name="icon">
-    <iconset resource="res.qrc">
-     <normaloff>:/img/img/R.png</normaloff>:/img/img/R.png</iconset>
-   </property>
-   <property name="text">
-    <string>Advanced</string>
-   </property>
-  </action>
  </widget>
- <resources>
-  <include location="res.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
