@@ -1,6 +1,5 @@
 #include "beginnerwindow.h"
 #include "ui_beginnerwindow.h"
-#include "intermediatewindow.h"
 #include <QRandomGenerator>
 //#include <algorithm>
 
@@ -37,6 +36,7 @@ void BeginnerWindow::on_actionIntermediate_triggered()
 {
     this->close();
     intermediateWindow = new IntermediateWindow(this);
+    intermediateWindow->resize(700,700);
     intermediateWindow->show();
 }
 
@@ -44,6 +44,7 @@ void BeginnerWindow::on_actionAdvanced_triggered()
 {
     this->close();
     advancedWindow = new AdvancedWindow(this);
+    advancedWindow->resize(700,700);
     advancedWindow->show();
 }
 
@@ -71,7 +72,7 @@ void BeginnerWindow::myRandomNumber(){
         do
         {
           unique=true;
-          newitem=QRandomGenerator::global()->bounded(1, 10);//Generate number between 10 to 30
+          newitem=QRandomGenerator::global()->bounded(1, 10);//Generate number between 1 to 10
           for(int i1=0;i1<i;i1++)
           {
              if(randArray[i1]==newitem)
