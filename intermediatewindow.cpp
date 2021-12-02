@@ -32,9 +32,9 @@ IntermediateWindow::~IntermediateWindow()
 
 void IntermediateWindow::on_actionBeginner_triggered()
 {
-//        this->close();
-//        beginnerWindow = new BeginnerWindow(this);
-//        beginnerWindow->show();
+//    this->close();
+//    beginnerWindow = new BeginnerWindow(this);
+//    beginnerWindow->show();
 }
 
 void IntermediateWindow::on_actionAdvanced_triggered()

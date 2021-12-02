@@ -1,23 +1,25 @@
 #include "beginnerwindow.h"
 #include "ui_beginnerwindow.h"
 #include <QRandomGenerator>
-//#include <algorithm>
 
+//Declaring global variables
  int counter =0;
  int sum;
  int randArray[6];
  int num1,num2,num3,num4,num5,num6,total=0;
+
 BeginnerWindow::BeginnerWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::BeginnerWindow)
 {
     ui->setupUi(this);
+    //Calling method to generate Random number and display it to the UI
     myRandomNumber();
 
     //Initialize "countdown" label text
     ui->Timerlbl->setText("00:30");
 
-    //Connect timer to slot so it gets updated
+    //Connect timer to mytimer slot so it gets updated
     timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(mytimer()));
 
@@ -34,21 +36,28 @@ BeginnerWindow::~BeginnerWindow()
 
 void BeginnerWindow::on_actionIntermediate_triggered()
 {
+    //Closing the Beginner Window
     this->close();
+    //Instantiating an object of Intermediate Window
     intermediateWindow = new IntermediateWindow(this);
+    //Resizing Window frame and displaying
     intermediateWindow->resize(700,700);
     intermediateWindow->show();
 }
 
 void BeginnerWindow::on_actionAdvanced_triggered()
 {
+    //Closing the Beginner Window
     this->close();
+    //Instantiating an object of Advanced Window
     advancedWindow = new AdvancedWindow(this);
+    //Resizing Window frame and displaying
     advancedWindow->resize(700,700);
     advancedWindow->show();
 }
 
 void BeginnerWindow::mytimer(){
+    //updates time
     time = time.addSecs(-1);
     counter += 1;
     ui->Timerlbl->setText(time.toString("mm:ss"));
@@ -58,6 +67,7 @@ void BeginnerWindow::mytimer(){
         ui->Statuslbl->setStyleSheet("color: red;");
         ui->Statuslbl->setText("GAME OVER");
         timer->stop();
+        //Disables the pushbuttons
         btnDisable();
     }
 }
@@ -66,6 +76,7 @@ void BeginnerWindow::myRandomNumber(){
     sum=0;
     randArray[5]=0;
     int newitem;
+    //Generates an array of distinct numbers
     for(int i=0;i<6;i++)
     {
         bool unique;
@@ -85,12 +96,15 @@ void BeginnerWindow::myRandomNumber(){
         randArray[i]=newitem;
 
     }
-
+    //Gets the sum of the first three array values
     for(int i=0; i<3;i++){
         sum+=randArray[i];
     }
+    //Assign the sum to the Targetlbl
     ui->Targetlbl->setText(QString::number(sum));
+    //Shuffles the order of elements in the array
     std::random_shuffle(&randArray[0],&randArray[6]);
+    //Display array values in the UI pushbuttons
     ui->btn0->setText(QString::number(randArray[0]));
     ui->btn1->setText(QString::number(randArray[1]));
     ui->btn2->setText(QString::number(randArray[2]));
@@ -103,13 +117,17 @@ void BeginnerWindow::myRandomNumber(){
 void BeginnerWindow::on_Againbtn_clicked()
 {
     total=0;
+    //Generates a new target number
     myRandomNumber();
+    //Resets the timer
     counter = 0;
     ui->Timerlbl->setText("00:30");
     timer->start(1000);
     time.setHMS(0,0,30);
     mytimer();
+    //Enables the pushbuttons
     btnEnable();
+    //Calls the calculation function
     calculation();
 }
 
@@ -186,6 +204,7 @@ void BeginnerWindow::btnEnable(){
     ui->btn5->setEnabled(true);
 }
 void BeginnerWindow::calculation(){
+    //Checks whether the clicked button values are equal to the Target value
     if(total==sum){
         ui->Statuslbl->setStyleSheet("color: green;");
         ui->Statuslbl->setText("Congradulations, You Won!!");
