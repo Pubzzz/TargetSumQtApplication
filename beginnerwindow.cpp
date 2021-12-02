@@ -13,6 +13,8 @@ BeginnerWindow::BeginnerWindow(QWidget *parent)
     , ui(new Ui::BeginnerWindow)
 {
     ui->setupUi(this);
+    ui->Levellbl->setText("Beginner Level");
+    ui->Levellbl->setStyleSheet("color: green;");
     //Calling method to generate Random number and display it to the UI
     myRandomNumber(1,10);
 
@@ -33,15 +35,25 @@ BeginnerWindow::~BeginnerWindow()
     delete ui;
 }
 
+void BeginnerWindow::on_actionBeginner_triggered()
+{
+    ui->Levellbl->setText("Beginner Level");
+    ui->Levellbl->setStyleSheet("color: green;");
+    myRandomNumber(1,10);
+}
 
 void BeginnerWindow::on_actionIntermediate_triggered()
 {
-    myRandomNumber(10,30);
+    ui->Levellbl->setText("Intermediate Level");
+    ui->Levellbl->setStyleSheet("color: blue;");
+    myRandomNumber(1,30);
 }
 
 void BeginnerWindow::on_actionAdvanced_triggered()
 {
-    myRandomNumber(10,50);
+    ui->Levellbl->setText("Advanced Level");
+    ui->Levellbl->setStyleSheet("color: red;");
+    myRandomNumber(10,80);
 }
 
 void BeginnerWindow::mytimer(){
@@ -206,4 +218,7 @@ void BeginnerWindow::calculation(){
         btnDisable();
     }
 }
+
+
+
 
