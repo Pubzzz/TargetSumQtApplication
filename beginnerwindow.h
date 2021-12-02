@@ -2,8 +2,6 @@
 #define BEGINNERWINDOW_H
 
 #include <QMainWindow>
-#include "intermediatewindow.h"
-#include "advancedwindow.h"
 #include <QTimer>
 #include <QTime>
 
@@ -21,7 +19,7 @@ public:
 
 public slots:
      void mytimer();
-     void myRandomNumber();
+     void myRandomNumber(int rangeStart,int rangeEnd);
      void btnDisable();
      void btnEnable();
      void calculation();
@@ -49,7 +47,5 @@ private:
     Ui::BeginnerWindow *ui;
     QTimer *timer;
     QTime time;
-    IntermediateWindow *intermediateWindow;
-    AdvancedWindow *advancedWindow;
 };
 #endif // BEGINNERWINDOW_H

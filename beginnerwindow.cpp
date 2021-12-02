@@ -14,7 +14,7 @@ BeginnerWindow::BeginnerWindow(QWidget *parent)
 {
     ui->setupUi(this);
     //Calling method to generate Random number and display it to the UI
-    myRandomNumber();
+    myRandomNumber(1,10);
 
     //Initialize "countdown" label text
     ui->Timerlbl->setText("00:30");
@@ -36,24 +36,12 @@ BeginnerWindow::~BeginnerWindow()
 
 void BeginnerWindow::on_actionIntermediate_triggered()
 {
-    //Closing the Beginner Window
-    this->close();
-    //Instantiating an object of Intermediate Window
-    intermediateWindow = new IntermediateWindow(this);
-    //Resizing Window frame and displaying
-    intermediateWindow->resize(700,700);
-    intermediateWindow->show();
+    myRandomNumber(10,30);
 }
 
 void BeginnerWindow::on_actionAdvanced_triggered()
 {
-    //Closing the Beginner Window
-    this->close();
-    //Instantiating an object of Advanced Window
-    advancedWindow = new AdvancedWindow(this);
-    //Resizing Window frame and displaying
-    advancedWindow->resize(700,700);
-    advancedWindow->show();
+    myRandomNumber(10,50);
 }
 
 void BeginnerWindow::mytimer(){
@@ -72,7 +60,7 @@ void BeginnerWindow::mytimer(){
     }
 }
 
-void BeginnerWindow::myRandomNumber(){
+void BeginnerWindow::myRandomNumber(int rangeStart,int rangeEnd){
     sum=0;
     randArray[5]=0;
     int newitem;
@@ -83,7 +71,7 @@ void BeginnerWindow::myRandomNumber(){
         do
         {
           unique=true;
-          newitem=QRandomGenerator::global()->bounded(1, 10);//Generate number between 1 to 10
+          newitem=QRandomGenerator::global()->bounded(rangeStart, rangeEnd);//Generate number between 1 to 10
           for(int i1=0;i1<i;i1++)
           {
              if(randArray[i1]==newitem)
@@ -118,7 +106,7 @@ void BeginnerWindow::on_Againbtn_clicked()
 {
     total=0;
     //Generates a new target number
-    myRandomNumber();
+    myRandomNumber(1,10);
     //Resets the timer
     counter = 0;
     ui->Timerlbl->setText("00:30");
@@ -218,3 +206,4 @@ void BeginnerWindow::calculation(){
         btnDisable();
     }
 }
+

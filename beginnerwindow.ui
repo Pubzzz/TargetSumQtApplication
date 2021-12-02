@@ -27,7 +27,7 @@
    <bool>true</bool>
   </property>
   <property name="windowTitle">
-   <string>Beginner Level</string>
+   <string>Target Sum - Sum Up Faster !!</string>
   </property>
   <property name="windowIcon">
    <iconset resource="res.qrc">
