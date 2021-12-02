@@ -7,14 +7,17 @@
  int sum;
  int randArray[6];
  int num1,num2,num3,num4,num5,num6,total=0;
+ int level=1;
 
 BeginnerWindow::BeginnerWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::BeginnerWindow)
 {
     ui->setupUi(this);
+    ui->Levellbl->setText("Beginner Level");
+    ui->Levellbl->setStyleSheet("color: green;");
     //Calling method to generate Random number and display it to the UI
-    myRandomNumber();
+    myRandomNumber(1,10);
 
     //Initialize "countdown" label text
     ui->Timerlbl->setText("00:30");
@@ -33,27 +36,59 @@ BeginnerWindow::~BeginnerWindow()
     delete ui;
 }
 
+void BeginnerWindow::on_actionBeginner_triggered()
+{
+    level=1;
+    timer->stop();
+    ui->Levellbl->setText("Beginner Level");
+    ui->Levellbl->setStyleSheet("color: green;");
+    myRandomNumber(1,10);
+    counter = 0;
+    ui->Timerlbl->setText("00:30");
+    timer->start(1000);
+    time.setHMS(0,0,30);
+    mytimer();
+    //Enables the pushbuttons
+    btnEnable();
+    //Calls the calculation function
+    calculation();
+}
 
 void BeginnerWindow::on_actionIntermediate_triggered()
 {
-    //Closing the Beginner Window
-    this->close();
-    //Instantiating an object of Intermediate Window
-    intermediateWindow = new IntermediateWindow(this);
-    //Resizing Window frame and displaying
-    intermediateWindow->resize(700,700);
-    intermediateWindow->show();
+    level=2;
+    timer->stop();
+    ui->Levellbl->setText("Intermediate Level");
+    ui->Levellbl->setStyleSheet("color: blue;");
+    myRandomNumber(1,30);
+    counter = 0;
+    ui->Timerlbl->setText("00:30");
+    timer->start(1000);
+    time.setHMS(0,0,30);
+    mytimer();
+    //Enables the pushbuttons
+    btnEnable();
+    //Calls the calculation function
+    calculation();
 }
 
 void BeginnerWindow::on_actionAdvanced_triggered()
 {
-    //Closing the Beginner Window
-    this->close();
-    //Instantiating an object of Advanced Window
-    advancedWindow = new AdvancedWindow(this);
-    //Resizing Window frame and displaying
-    advancedWindow->resize(700,700);
-    advancedWindow->show();
+    level=3;
+    timer->stop();
+    ui->Levellbl->setText("Advanced Level");
+    ui->Levellbl->setStyleSheet("color: red;");
+    myRandomNumber(10,80);
+    counter = 0;
+    ui->Timerlbl->setText("00:20");
+    timer->start(1000);
+    time.setHMS(0,0,20);
+    mytimer();
+    //Enables the pushbuttons
+    btnEnable();
+    //Calls the calculation function
+    calculation();
+
 }
 
 void BeginnerWindow::mytimer(){
@@ -63,16 +98,27 @@ void BeginnerWindow::mytimer(){
     ui->Timerlbl->setText(time.toString("mm:ss"));
     ui->Statuslbl->setStyleSheet("color: green;");
     ui->Statuslbl->setText("PLAYING");
-    if(counter == 30){
-        ui->Statuslbl->setStyleSheet("color: red;");
-        ui->Statuslbl->setText("GAME OVER");
-        timer->stop();
-        //Disables the pushbuttons
-        btnDisable();
+    if(level==1 || level==2){
+        if(counter == 30){
+            ui->Statuslbl->setStyleSheet("color: red;");
+            ui->Statuslbl->setText("GAME OVER");
+            timer->stop();
+            //Disables the pushbuttons
+            btnDisable();
+        }
+    }
+    else{
+        if(counter == 20){
+                ui->Statuslbl->setStyleSheet("color: red;");
+                ui->Statuslbl->setText("GAME OVER");
+                timer->stop();
+                //Disables the pushbuttons
+                btnDisable();
+            }
     }
 }
 
-void BeginnerWindow::myRandomNumber(){
+void BeginnerWindow::myRandomNumber(int rangeStart,int rangeEnd){
     sum=0;
     randArray[5]=0;
     int newitem;
@@ -83,7 +129,7 @@ void BeginnerWindow::myRandomNumber(){
         do
         {
           unique=true;
-          newitem=QRandomGenerator::global()->bounded(1, 10);//Generate number between 1 to 10
+          newitem=QRandomGenerator::global()->bounded(rangeStart, rangeEnd);//Generate number between 1 to 10
           for(int i1=0;i1<i;i1++)
           {
              if(randArray[i1]==newitem)
@@ -116,9 +162,10 @@ void BeginnerWindow::myRandomNumber(){
 
 void BeginnerWindow::on_Againbtn_clicked()
 {
+    if(level==1){
     total=0;
     //Generates a new target number
-    myRandomNumber();
+    myRandomNumber(1,10);
     //Resets the timer
     counter = 0;
     ui->Timerlbl->setText("00:30");
@@ -129,6 +176,37 @@ void BeginnerWindow::on_Againbtn_clicked()
     btnEnable();
     //Calls the calculation function
     calculation();
+    }
+    else if(level==2){
+        total=0;
+        //Generates a new target number
+        myRandomNumber(1,30);
+        //Resets the timer
+        counter = 0;
+        ui->Timerlbl->setText("00:30");
+        timer->start(1000);
+        time.setHMS(0,0,30);
+        mytimer();
+        //Enables the pushbuttons
+        btnEnable();
+        //Calls the calculation function
+        calculation();
+    }
+    else{
+        total=0;
+        //Generates a new target number
+        myRandomNumber(10,80);
+        //Resets the timer
+        counter = 0;
+        ui->Timerlbl->setText("00:20");
+        timer->start(1000);
+        time.setHMS(0,0,20);
+        mytimer();
+        //Enables the pushbuttons
+        btnEnable();
+        //Calls the calculation function
+        calculation();
+    }
 }
 
 
@@ -218,3 +296,7 @@ void BeginnerWindow::calculation(){
         btnDisable();
     }
 }
+
+
+
+
