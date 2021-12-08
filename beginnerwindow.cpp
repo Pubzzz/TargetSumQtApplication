@@ -6,7 +6,8 @@
  int counter =0;
  int sum;
  int randArray[6];
- int num1,num2,num3,num4,num5,num6,total=0;
+ int randAdvancedArray[9];
+ int num1,num2,num3,num4,num5,num6,num7,num8,num9,total=0;
  int level=1;
 
 BeginnerWindow::BeginnerWindow(QWidget *parent)
@@ -29,6 +30,7 @@ BeginnerWindow::BeginnerWindow(QWidget *parent)
     //It is started with a value of 1000 milliseconds, indicating that it will time out every second.
     timer->start(1000);
     time.setHMS(0,0,30);
+
 }
 
 BeginnerWindow::~BeginnerWindow()
@@ -74,6 +76,9 @@ void BeginnerWindow::on_actionIntermediate_triggered()
 
 void BeginnerWindow::on_actionAdvanced_triggered()
 {
+    ui->btn6->show();
+    ui->btn7->show();
+    ui->btn8->show();
     level=3;
     timer->stop();
     ui->Levellbl->setText("Advanced Level");
@@ -119,8 +124,8 @@ void BeginnerWindow::mytimer(){
 }
 
 void BeginnerWindow::myRandomNumber(int rangeStart,int rangeEnd){
+    if(level==1 || level ==2){
     sum=0;
-    randArray[5]=0;
     int newitem;
     //Generates an array of distinct numbers
     for(int i=0;i<6;i++)
@@ -157,6 +162,52 @@ void BeginnerWindow::myRandomNumber(int rangeStart,int rangeEnd){
     ui->btn3->setText(QString::number(randArray[3]));
     ui->btn4->setText(QString::number(randArray[4]));
     ui->btn5->setText(QString::number(randArray[5]));
+    ui->btn6->hide();
+    ui->btn7->hide();
+    ui->btn8->hide();
+    }
+    else{
+        sum=0;
+        int newitem;
+        //Generates an array of distinct numbers
+        for(int i=0;i<9;i++)
+        {
+            bool unique;
+            do
+            {
+              unique=true;
+              newitem=QRandomGenerator::global()->bounded(rangeStart, rangeEnd);//Generate number between 1 to 10
+              for(int i1=0;i1<i;i1++)
+              {
+                 if(randAdvancedArray[i1]==newitem)
+                 {
+                   unique=false;
+                    break;
+                 }
+              }
+            }while(!unique);
+            randAdvancedArray[i]=newitem;
+
+        }
+        //Gets the sum of the first three array values
+        for(int i=0; i<4;i++){
+            sum+=randAdvancedArray[i];
+        }
+        //Assign the sum to the Targetlbl
+        ui->Targetlbl->setText(QString::number(sum));
+        //Shuffles the order of elements in the array
+        std::random_shuffle(&randAdvancedArray[0],&randAdvancedArray[9]);
+        //Display array values in the UI pushbuttons
+        ui->btn0->setText(QString::number(randAdvancedArray[0]));
+        ui->btn1->setText(QString::number(randAdvancedArray[1]));
+        ui->btn2->setText(QString::number(randAdvancedArray[2]));
+        ui->btn3->setText(QString::number(randAdvancedArray[3]));
+        ui->btn4->setText(QString::number(randAdvancedArray[4]));
+        ui->btn5->setText(QString::number(randAdvancedArray[5]));
+        ui->btn6->setText(QString::number(randAdvancedArray[6]));
+        ui->btn7->setText(QString::number(randAdvancedArray[7]));
+        ui->btn8->setText(QString::number(randAdvancedArray[8]));
+    }
 
 }
 
@@ -272,6 +323,9 @@ void BeginnerWindow::btnDisable(){
     ui->btn3->setEnabled(false);
     ui->btn4->setEnabled(false);
     ui->btn5->setEnabled(false);
+    ui->btn6->setEnabled(false);
+    ui->btn7->setEnabled(false);
+    ui->btn8->setEnabled(false);
 }
 void BeginnerWindow::btnEnable(){
     ui->btn0->setEnabled(true);
@@ -280,6 +334,9 @@ void BeginnerWindow::btnEnable(){
     ui->btn3->setEnabled(true);
     ui->btn4->setEnabled(true);
     ui->btn5->setEnabled(true);
+    ui->btn6->setEnabled(true);
+    ui->btn7->setEnabled(true);
+    ui->btn8->setEnabled(true);
 }
 void BeginnerWindow::calculation(){
     //Checks whether the clicked button values are equal to the Target value
@@ -299,4 +356,31 @@ void BeginnerWindow::calculation(){
 
 
 
+
+
+void BeginnerWindow::on_btn6_clicked()
+{
+    num7 = ui->btn6->text().toInt();
+    total = total +num7;
+    ui->btn6->setEnabled(false);
+    calculation();
+}
+
+
+void BeginnerWindow::on_btn7_clicked()
+{
+    num8 = ui->btn7->text().toInt();
+    total = total +num8;
+    ui->btn7->setEnabled(false);
+    calculation();
+}
+
+
+void BeginnerWindow::on_btn8_clicked()
+{
+    num9 = ui->btn8->text().toInt();
+    total = total +num9;
+    ui->btn8->setEnabled(false);
+    calculation();
+}
 

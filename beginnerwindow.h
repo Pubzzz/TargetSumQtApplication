@@ -45,6 +45,12 @@ private slots:
 
     void on_actionBeginner_triggered();
 
+    void on_btn6_clicked();
+
+    void on_btn7_clicked();
+
+    void on_btn8_clicked();
+
 private:
     Ui::BeginnerWindow *ui;
     QTimer *timer;
