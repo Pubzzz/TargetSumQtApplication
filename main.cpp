@@ -6,7 +6,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     BeginnerWindow B;
-    B.resize(582,618);
+    B.resize(460,530);
     B.show();
     return a.exec();
 }
