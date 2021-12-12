@@ -23,6 +23,7 @@ public slots:
      void btnDisable();
      void btnEnable();
      void calculation();
+     void ResetColor();
 
 private slots:
     void on_actionIntermediate_triggered();
@@ -50,6 +51,8 @@ private slots:
     void on_btn7_clicked();
 
     void on_btn8_clicked();
+
+    void on_btn0_toggled(bool checked);
 
 private:
     Ui::BeginnerWindow *ui;

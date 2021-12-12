@@ -9,6 +9,10 @@
  int randAdvancedArray[9];
  int num1,num2,num3,num4,num5,num6,num7,num8,num9,total=0;
  int level=1;
+ QString clickedStyle="QPushButton {"
+                      "background-color:#E0E0E0;"
+                      "border-radius:5%;"
+                    "}";
 
 BeginnerWindow::BeginnerWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -16,7 +20,6 @@ BeginnerWindow::BeginnerWindow(QWidget *parent)
 {
     ui->setupUi(this);
     ui->Levellbl->setText("Beginner Level");
-    ui->Levellbl->setStyleSheet("color: green;");
     //Calling method to generate Random number and display it to the UI
     myRandomNumber(1,10);
 
@@ -43,7 +46,6 @@ void BeginnerWindow::on_actionBeginner_triggered()
     level=1;
     timer->stop();
     ui->Levellbl->setText("Beginner Level");
-    ui->Levellbl->setStyleSheet("color: green;");
     myRandomNumber(1,10);
     counter = 0;
     ui->Timerlbl->setText("00:30");
@@ -54,6 +56,7 @@ void BeginnerWindow::on_actionBeginner_triggered()
     btnEnable();
     //Calls the calculation function
     calculation();
+    ResetColor();
 }
 
 void BeginnerWindow::on_actionIntermediate_triggered()
@@ -61,7 +64,6 @@ void BeginnerWindow::on_actionIntermediate_triggered()
     level=2;
     timer->stop();
     ui->Levellbl->setText("Intermediate Level");
-    ui->Levellbl->setStyleSheet("color: blue;");
     myRandomNumber(1,30);
     counter = 0;
     ui->Timerlbl->setText("00:30");
@@ -72,6 +74,7 @@ void BeginnerWindow::on_actionIntermediate_triggered()
     btnEnable();
     //Calls the calculation function
     calculation();
+    ResetColor();
 }
 
 void BeginnerWindow::on_actionAdvanced_triggered()
@@ -82,7 +85,6 @@ void BeginnerWindow::on_actionAdvanced_triggered()
     level=3;
     timer->stop();
     ui->Levellbl->setText("Advanced Level");
-    ui->Levellbl->setStyleSheet("color: red;");
     myRandomNumber(10,80);
     counter = 0;
     ui->Timerlbl->setText("00:20");
@@ -93,7 +95,7 @@ void BeginnerWindow::on_actionAdvanced_triggered()
     btnEnable();
     //Calls the calculation function
     calculation();
-
+    ResetColor();
 }
 
 void BeginnerWindow::mytimer(){
@@ -101,7 +103,7 @@ void BeginnerWindow::mytimer(){
     time = time.addSecs(-1);
     counter += 1;
     ui->Timerlbl->setText(time.toString("mm:ss"));
-    ui->Statuslbl->setStyleSheet("color: green;");
+    ui->Statuslbl->setStyleSheet("color: black;");
     ui->Statuslbl->setText("PLAYING");
     if(level==1 || level==2){
         if(counter == 30){
@@ -134,7 +136,7 @@ void BeginnerWindow::myRandomNumber(int rangeStart,int rangeEnd){
         do
         {
           unique=true;
-          newitem=QRandomGenerator::global()->bounded(rangeStart, rangeEnd);//Generate number between 1 to 10
+          newitem=QRandomGenerator::global()->bounded(rangeStart, rangeEnd);//Generate number between the given range
           for(int i1=0;i1<i;i1++)
           {
              if(randArray[i1]==newitem)
@@ -176,7 +178,7 @@ void BeginnerWindow::myRandomNumber(int rangeStart,int rangeEnd){
             do
             {
               unique=true;
-              newitem=QRandomGenerator::global()->bounded(rangeStart, rangeEnd);//Generate number between 1 to 10
+              newitem=QRandomGenerator::global()->bounded(rangeStart, rangeEnd);//Generate number between the given range
               for(int i1=0;i1<i;i1++)
               {
                  if(randAdvancedArray[i1]==newitem)
@@ -227,6 +229,7 @@ void BeginnerWindow::on_Againbtn_clicked()
     btnEnable();
     //Calls the calculation function
     calculation();
+    ResetColor();
     }
     else if(level==2){
         total=0;
@@ -242,6 +245,7 @@ void BeginnerWindow::on_Againbtn_clicked()
         btnEnable();
         //Calls the calculation function
         calculation();
+        ResetColor();
     }
     else{
         total=0;
@@ -257,6 +261,7 @@ void BeginnerWindow::on_Againbtn_clicked()
         btnEnable();
         //Calls the calculation function
         calculation();
+        ResetColor();
     }
 }
 
@@ -267,7 +272,9 @@ void BeginnerWindow::on_btn0_clicked()
     total = total +num1;
     ui->btn0->setEnabled(false);
     calculation();
+    ui->btn0->setStyleSheet(clickedStyle);
 }
+
 
 void BeginnerWindow::on_btn1_clicked()
 {
@@ -275,6 +282,7 @@ void BeginnerWindow::on_btn1_clicked()
     total = total +num2;
     ui->btn1->setEnabled(false);
     calculation();
+    ui->btn1->setStyleSheet(clickedStyle);
 }
 
 void BeginnerWindow::on_btn2_clicked()
@@ -283,7 +291,7 @@ void BeginnerWindow::on_btn2_clicked()
     total = total +num3;
     ui->btn2->setEnabled(false);
     calculation();
-
+    ui->btn2->setStyleSheet(clickedStyle);
 }
 
 
@@ -293,6 +301,7 @@ void BeginnerWindow::on_btn3_clicked()
     total = total +=num4;
     ui->btn3->setEnabled(false);
     calculation();
+    ui->btn3->setStyleSheet(clickedStyle);
 
 }
 
@@ -303,6 +312,7 @@ void BeginnerWindow::on_btn4_clicked()
     total = total +num5;
     ui->btn4->setEnabled(false);
     calculation();
+    ui->btn4->setStyleSheet(clickedStyle);
 
 }
 
@@ -313,6 +323,7 @@ void BeginnerWindow::on_btn5_clicked()
     total = total +num6;
     ui->btn5->setEnabled(false);
     calculation();
+    ui->btn5->setStyleSheet(clickedStyle);
 
 }
 
@@ -354,16 +365,13 @@ void BeginnerWindow::calculation(){
     }
 }
 
-
-
-
-
 void BeginnerWindow::on_btn6_clicked()
 {
     num7 = ui->btn6->text().toInt();
     total = total +num7;
     ui->btn6->setEnabled(false);
     calculation();
+    ui->btn6->setStyleSheet(clickedStyle);
 }
 
 
@@ -373,6 +381,7 @@ void BeginnerWindow::on_btn7_clicked()
     total = total +num8;
     ui->btn7->setEnabled(false);
     calculation();
+    ui->btn7->setStyleSheet(clickedStyle);
 }
 
 
@@ -382,5 +391,20 @@ void BeginnerWindow::on_btn8_clicked()
     total = total +num9;
     ui->btn8->setEnabled(false);
     calculation();
+    ui->btn8->setStyleSheet(clickedStyle);
 }
+
+void BeginnerWindow::ResetColor(){
+    ui->btn0->setStyleSheet("outline: none;");
+    ui->btn1->setStyleSheet("outline: none;");
+    ui->btn2->setStyleSheet("outline: none;");
+    ui->btn3->setStyleSheet("outline: none;");
+    ui->btn4->setStyleSheet("outline: none;");
+    ui->btn5->setStyleSheet("outline: none;");
+    ui->btn6->setStyleSheet("outline: none;");
+    ui->btn7->setStyleSheet("outline: none;");
+    ui->btn8->setStyleSheet("outline: none;");
+}
+
+
 
