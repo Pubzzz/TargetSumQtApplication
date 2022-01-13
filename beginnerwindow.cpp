@@ -1,4 +1,4 @@
-#include "beginnerwindow.h"
+ #include "beginnerwindow.h"
 #include "ui_beginnerwindow.h"
 #include <QRandomGenerator>
 
