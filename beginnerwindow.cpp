@@ -33,7 +33,6 @@ BeginnerWindow::BeginnerWindow(QWidget *parent)
     //It is started with a value of 1000 milliseconds, indicating that it will time out every second.
     timer->start(1000);
     time.setHMS(0,0,30);
-
 }
 
 BeginnerWindow::~BeginnerWindow()
@@ -43,58 +42,80 @@ BeginnerWindow::~BeginnerWindow()
 
 void BeginnerWindow::on_actionBeginner_triggered()
 {
+    //enum used to detect the level
     level=1;
+    //putting an end to the running timer
     timer->stop();
     ui->Levellbl->setText("Beginner Level");
+    //calls function to generate number between given range
     myRandomNumber(1,10);
+    //setting counter to zero
     counter = 0;
     ui->Timerlbl->setText("00:30");
+    //starting the timer and setting it to 30 seconds
     timer->start(1000);
     time.setHMS(0,0,30);
+    //function used to update time together with the timer and counter
     mytimer();
     //Enables the pushbuttons
     btnEnable();
-    //Calls the calculation function
+    //Calls the calculation function to start calculation of values
     calculation();
+    //resets the color of the pushbuttons
     ResetColor();
 }
 
 void BeginnerWindow::on_actionIntermediate_triggered()
 {
+    //enum used to detect the level
     level=2;
+    //putting an end to the running timer
     timer->stop();
     ui->Levellbl->setText("Intermediate Level");
+    //calls function to generate number between given range
     myRandomNumber(1,30);
+    //setting counter to zero
     counter = 0;
     ui->Timerlbl->setText("00:30");
+    //starting the timer and setting it to 30 seconds
     timer->start(1000);
     time.setHMS(0,0,30);
+    //function used to update time together with the timer and counter
     mytimer();
     //Enables the pushbuttons
     btnEnable();
-    //Calls the calculation function
+    //Calls the calculation function to start calculation of values
     calculation();
+    //resets the color of the pushbuttons
     ResetColor();
 }
 
 void BeginnerWindow::on_actionAdvanced_triggered()
 {
+    //displays the hidden buttons
     ui->btn6->show();
     ui->btn7->show();
     ui->btn8->show();
+    //enum used to detect the level
     level=3;
+    //putting an end to the running timer
     timer->stop();
     ui->Levellbl->setText("Advanced Level");
+    //calls function to generate number between given range
     myRandomNumber(10,80);
+    //setting counter to zero
     counter = 0;
     ui->Timerlbl->setText("00:20");
+    //starting the timer and setting it to 20 seconds
     timer->start(1000);
     time.setHMS(0,0,20);
+    //function used to update time together with the timer and counter
     mytimer();
     //Enables the pushbuttons
     btnEnable();
-    //Calls the calculation function
+    //Calls the calculation function to start calculation of values
     calculation();
+    //resets the color of the pushbuttons
     ResetColor();
 }
 
@@ -105,6 +126,7 @@ void BeginnerWindow::mytimer(){
     ui->Timerlbl->setText(time.toString("mm:ss"));
     ui->Statuslbl->setStyleSheet("color: black;");
     ui->Statuslbl->setText("PLAYING");
+    //detects the current level and loops upto 30 seconds
     if(level==1 || level==2){
         if(counter == 30){
             ui->Statuslbl->setStyleSheet("color: red;");
@@ -115,6 +137,7 @@ void BeginnerWindow::mytimer(){
         }
     }
     else{
+        //detects the current level and loops upto 20 seconds
         if(counter == 20){
                 ui->Statuslbl->setStyleSheet("color: red;");
                 ui->Statuslbl->setText("GAME OVER");
@@ -126,6 +149,7 @@ void BeginnerWindow::mytimer(){
 }
 
 void BeginnerWindow::myRandomNumber(int rangeStart,int rangeEnd){
+    //detects the ongoing level and assignes values to pushbuttons using the created array.
     if(level==1 || level ==2){
     sum=0;
     int newitem;
@@ -164,6 +188,7 @@ void BeginnerWindow::myRandomNumber(int rangeStart,int rangeEnd){
     ui->btn3->setText(QString::number(randArray[3]));
     ui->btn4->setText(QString::number(randArray[4]));
     ui->btn5->setText(QString::number(randArray[5]));
+    //only 6 buttons are shown in these levels so the rest are hidden
     ui->btn6->hide();
     ui->btn7->hide();
     ui->btn8->hide();
@@ -210,7 +235,6 @@ void BeginnerWindow::myRandomNumber(int rangeStart,int rangeEnd){
         ui->btn7->setText(QString::number(randAdvancedArray[7]));
         ui->btn8->setText(QString::number(randAdvancedArray[8]));
     }
-
 }
 
 void BeginnerWindow::on_Againbtn_clicked()
@@ -268,10 +292,15 @@ void BeginnerWindow::on_Againbtn_clicked()
 
 void BeginnerWindow::on_btn0_clicked()
 {
+    //takes the value displayed in the pushbutton type cast to integer and assign to global variable
     num1 = ui-> btn0->text().toInt();
+    //records the total of clicked button values to total variable.
     total = total +num1;
+    //disables the pushbutton so it is not clickable once again
     ui->btn0->setEnabled(false);
+    //Checks whether updated total variable is equal with the target value
     calculation();
+    //gives a common style to all clicked pushbuttons
     ui->btn0->setStyleSheet(clickedStyle);
 }
 
@@ -328,6 +357,7 @@ void BeginnerWindow::on_btn5_clicked()
 }
 
 void BeginnerWindow::btnDisable(){
+    //disables all buttons
     ui->btn0->setEnabled(false);
     ui->btn1->setEnabled(false);
     ui->btn2->setEnabled(false);
@@ -339,6 +369,7 @@ void BeginnerWindow::btnDisable(){
     ui->btn8->setEnabled(false);
 }
 void BeginnerWindow::btnEnable(){
+    //enables all buttons
     ui->btn0->setEnabled(true);
     ui->btn1->setEnabled(true);
     ui->btn2->setEnabled(true);
@@ -354,13 +385,17 @@ void BeginnerWindow::calculation(){
     if(total==sum){
         ui->Statuslbl->setStyleSheet("color: green;");
         ui->Statuslbl->setText("Congradulations, You Won!!");
+        //stops the timer
         timer->stop();
+        //disables all buttons
         btnDisable();
     }
     else if(total>sum){
         ui->Statuslbl->setStyleSheet("color: red;");
         ui->Statuslbl->setText("Oops,You Lost! Let's try Again");
+        //stops the timer
         timer->stop();
+        //disables all buttons
         btnDisable();
     }
 }
@@ -395,6 +430,7 @@ void BeginnerWindow::on_btn8_clicked()
 }
 
 void BeginnerWindow::ResetColor(){
+    //resets the color of all the buttons
     ui->btn0->setStyleSheet("outline: none;");
     ui->btn1->setStyleSheet("outline: none;");
     ui->btn2->setStyleSheet("outline: none;");
