@@ -1,6 +1,7 @@
 #include "beginnerwindow.h"
 #include "ui_beginnerwindow.h"
 #include <QRandomGenerator>
+#include <algorithm>
 
 //Declaring global variables
  int counter =0;
