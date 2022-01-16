@@ -1,4 +1,4 @@
- #include "beginnerwindow.h"
+#include "beginnerwindow.h"
 #include "ui_beginnerwindow.h"
 #include <QRandomGenerator>
 
@@ -405,6 +405,7 @@ void BeginnerWindow::ResetColor(){
     ui->btn7->setStyleSheet("outline: none;");
     ui->btn8->setStyleSheet("outline: none;");
 }
+
 
 
 

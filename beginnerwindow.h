@@ -52,6 +52,7 @@ private slots:
 
     void on_btn8_clicked();
 
+
 private:
     Ui::BeginnerWindow *ui;
     QTimer *timer;
